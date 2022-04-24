@@ -31,6 +31,13 @@ main:
 
 	lw	$ra, 0($sp)
 	addiu	$sp, $sp, 4
+	
+	###Mostra cflotant en decimal
+	li $v0, 2
+	lwc1 $f12, 0($t0)
+	syscall
+	###Mostra cflotant en decimal
+	
 	jr	$ra
 
 
@@ -61,9 +68,9 @@ else:   sw $t0, 0($a2)
 compon:
 	sll $a1, $a1, 23
 	sll $a0, $a0, 31
-	or $a1, $a1, $a0
-	or $a1, $a1, $a2
-	mtc1 $a1, $f0
+	or $t0, $a1, $a0
+	or $t0, $t0, $a2
+	mtc1 $t0, $f0
 	
 	jr $ra
 
